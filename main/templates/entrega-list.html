@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4>Entregas</h4>
+        </div>
+        <a type="button" class="btn btn-dark" href="{%url 'entrega-create' %}">Cadastrar entrega</a>
+        <div class="card-body" style="overflow-x:auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Medicamento</th>
+                        <th scope="col">Farmácia</th>
+                        <th scope="col">Entregador</th>
+                        <th scope="col">destinatário</th>
+                        <th scope="col">Rua</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">Bairro</th>
+                        <th scope="col">Cidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entrega in entregas %}
+                    <tr>
+                        <td>{{ entrega.medicamento }}</td>
+                        <td>{{ entrega.Farmacia }}</td>
+                        <td>{{ entrega.entregador }}</td>
+                        <td>{{ entrega.destinatario }}</td>
+                        <td>{{ entrega.rua }}</td>
+                        <td>{{ entrega.numero }}</td>
+                        <td>{{ entrega.bairro }}</td>
+                        <td>{{ entrega.cidade }}</td>
+                        <td><a type="button" class="btn btn-warning" href="/entrega-update/{{ entrega.id }}">Editar</a>
+                            <a type="button" class="btn btn-danger" href="/entrega-delete/{{ entrega.id }}">Deletar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
